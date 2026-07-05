@@ -1,0 +1,14 @@
+root: ./
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
+
+redirects:
+  # Legacy / alternate paths kept stable for external links.
+  oracle/how-it-works: protocol-overview/how-pythias-oracle-works.md
+  oracle/dvm: protocol-overview/the-dvm.md
+  developers/oov2: developers/optimistic-oracle/README.md
+  developers/oov3: developers/optimistic-oracle-v3/README.md
+  resources/addresses: resources/network-information.md
+  resources/contracts: resources/contract-reference/README.md
