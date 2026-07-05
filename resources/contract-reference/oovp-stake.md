@@ -1,4 +1,4 @@
-# oovp.stake
+# pythiastake1
 
 Staking, delegation, emission rewards, slashing, and vote-locking for the DVM.
 
@@ -6,7 +6,7 @@ Staking, delegation, emission rewards, slashing, and vote-locking for the DVM.
 
 | Memo | Purpose |
 |---|---|
-| `stake` | Stake the transferred OOVP for the sender. |
+| `stake` | Stake the transferred PYTHIA for the sender. |
 | `emission` | Fund emissions — reserved for the configured emissions vault. |
 
 ## Staking actions
@@ -47,10 +47,10 @@ Staking, delegation, emission rewards, slashing, and vote-locking for the DVM.
 
 | Action | Description |
 |---|---|
-| `setvotingtkn(token_contract, token_symbol)` | Set the OOVP token contract + symbol. |
+| `setvotingtkn(token_contract, token_symbol)` | Set the PYTHIA token contract + symbol. |
 | `setvotingctr(voting_contract)` | Set the DVM voting contract. |
 | `setemitvault(vault)` | Set the emissions vault (must grant `stake@eosio.code`). |
-| `setemission(rate)` | Emission rate (raw units/sec; default 500 = 0.05 OOVP/sec). |
+| `setemission(rate)` | Emission rate (raw units/sec; default 500 = 0.05 PYTHIA/sec). |
 | `setcooldown(seconds)` | Unstake cooldown (1–30 days; default 7 days). |
 | `setnovote(bps)` | Passive (no-vote) slash rate (default 5 = 0.05%). |
 | `setlockparms(max_lock, min_lock, max_mult_bps)` | Vote-lock schedule. |

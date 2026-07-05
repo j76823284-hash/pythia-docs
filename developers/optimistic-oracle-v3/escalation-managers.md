@@ -33,7 +33,7 @@ TABLE assertion {
 
 Today `asserttruth` records the `escalation_manager` and `domain_id` you pass and initializes the three flags to `false`, so:
 
-* Disputes escalate to the **DVM** (`oovp.voting`).
+* Disputes escalate to the **DVM** (`pythiavoting`).
 * Anyone may dispute during liveness.
 * The DVM result is authoritative.
 

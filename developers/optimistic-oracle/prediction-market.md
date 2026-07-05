@@ -2,10 +2,6 @@
 
 A prediction market lets users trade on the outcome of a real-world event ("Will X happen by date D?"). Pythia resolves the event; your market contract pays out accordingly.
 
-{% hint style="success" %}
-**Foretell** is a production prediction-market application that settles through Pythia. This page describes the integration pattern generically; Foretell is a concrete implementation of it using a unified bucket-LMSR market engine.
-{% endhint %}
-
 ## The pattern
 
 1. **Create a market** with a question, an outcome encoding, and a resolution time. Encode the question in the request's `ancillary_data` so it is unambiguous.

@@ -3,12 +3,8 @@
 ## Pythia
 
 * **Documentation** — this book.
-* **Protocol contracts** — the `oovp.*` Antelope/C++ contract suite (source repository).
+* **Protocol contracts** — the Pythia Antelope/C++ contract suite (source repository).
 * **Official channels** (website, Discord, X/Twitter, security contact) — published with the project's launch materials. Until mainnet, treat any address you find as unofficial unless it is confirmed through an official channel.
-
-{% hint style="info" %}
-Pythia is the **oracle / DVM / staking / governance** protocol. Related products — **Foretell** (prediction markets) and **Prism** (benchmark / market data) — integrate with Pythia but are separate products with their own sites. Don't conflate them.
-{% endhint %}
 
 ## WAX / Antelope
 

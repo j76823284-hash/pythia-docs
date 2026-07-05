@@ -1,6 +1,6 @@
 # Approved Price Identifiers
 
-A **price identifier** is a `uint64` key that tells voters _what_ they are resolving and _by what methodology_. Only identifiers whitelisted in `oovp.finder` may be requested or asserted.
+A **price identifier** is a `uint64` key that tells voters _what_ they are resolving and _by what methodology_. Only identifiers whitelisted in `<finder>` may be requested or asserted.
 
 ## How identifiers work
 
@@ -29,7 +29,7 @@ cleos push action <finder> addident '[<uint64_identifier>,"<LABEL>"]' -p <finder
 After adding an identifier, refresh the oracle's cache so the OOv3 path recognizes it:
 
 ```bash
-cleos push action <oracle> syncparams '[<uint64_identifier>,{"sym":"4,OOVP","contract":"<token>"}]' -p anyone@active
+cleos push action <oracle> syncparams '[<uint64_identifier>,{"sym":"4,PYTHIA","contract":"<token>"}]' -p anyone@active
 ```
 
 Remove one with `rmident`.

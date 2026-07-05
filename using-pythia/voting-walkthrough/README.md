@@ -1,6 +1,6 @@
 # Voting Walkthrough
 
-Stakers are the backbone of Pythia's security. By staking OOVP and voting honestly on disputes, you earn emissions and a share of slashed stake — and you keep the oracle trustworthy.
+Stakers are the backbone of Pythia's security. By staking PYTHIA and voting honestly on disputes, you earn emissions and a share of slashed stake — and you keep the oracle trustworthy.
 
 This section walks through everything a staker/voter needs:
 
@@ -13,12 +13,12 @@ This section walks through everything a staker/voter needs:
 ## The voter lifecycle at a glance
 
 ```
-stake OOVP ──► (dispute escalates to DVM) ──► commit vote ──► reveal vote ──► earn / get slashed ──► claim
+stake PYTHIA ──► (dispute escalates to DVM) ──► commit vote ──► reveal vote ──► earn / get slashed ──► claim
       ▲                                                                                           │
       └───────────────────────────── restake or unstake (after cooldown) ◄───────────────────────┘
 ```
 
-1. **Stake** OOVP into `oovp.stake` (transfer with memo `stake`). Your balance is your vote weight.
+1. **Stake** PYTHIA into `pythiastake1` (transfer with memo `stake`). Your balance is your vote weight.
 2. When a dispute is queued, **commit** a hashed vote during the commit phase.
 3. **Reveal** your vote during the reveal phase.
 4. After the round is processed, correct voters are **rewarded** from the slashed pool; wrong/absent voters are **slashed**.

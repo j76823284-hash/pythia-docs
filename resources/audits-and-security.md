@@ -9,7 +9,7 @@ Pythia is **pre-mainnet**. It is deployed and exercised on the WAX testnet. A ma
 
 1. **External audit sign-off** of the contract suite.
 2. **Multisig hardening** of every contract and vault admin key (no single deployer key should retain control of the oracle).
-3. Handing parameter control to `oovp.govern`.
+3. Handing parameter control to `pythiagovern`.
 
 Do not treat testnet deployments as production, and do not integrate against mainnet until these gates are cleared and this page says so.
 {% endhint %}
@@ -18,10 +18,10 @@ Do not treat testnet deployments as production, and do not integrate against mai
 
 The highest-value surfaces to review before relying on Pythia:
 
-* **Bond & settlement math** in `oovp.oracle` — the payout and burned-bond calculations for OOv2 and OOv3.
-* **DVM resolution & slashing** in `oovp.voting` and `oovp.stake` — snapshotting, quorum, and the token-conserving slash→reward redistribution.
-* **Governance execution** in `oovp.govern` — the `target@exec` authorization requirement and the transaction-hash re-verification at execute time.
-* **Registry gating** in `oovp.finder` — only registered contracts may request; only whitelisted collateral/identifiers are accepted.
+* **Bond & settlement math** in `pythiaoorcle` — the payout and burned-bond calculations for OOv2 and OOv3.
+* **DVM resolution & slashing** in `pythiavoting` and `pythiastake1` — snapshotting, quorum, and the token-conserving slash→reward redistribution.
+* **Governance execution** in `pythiagovern` — the `target@exec` authorization requirement and the transaction-hash re-verification at execute time.
+* **Registry gating** in `<finder>` — only registered contracts may request; only whitelisted collateral/identifiers are accepted.
 * **`eosio.code` permissions** — every contract that sends inline actions must hold its own `eosio.code`, and governed actions must be `linkauth`-scoped to `exec`.
 
 ## Design safeguards already in place

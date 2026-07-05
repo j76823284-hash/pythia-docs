@@ -1,6 +1,6 @@
-# oovp.oracle
+# pythiaoorcle
 
-The optimistic oracle. Hosts both the **OOv2** (request → propose → dispute → settle) and **OOv3** (assert → dispute → settle) flows, and escalates disputes to `oovp.voting`.
+The optimistic oracle. Hosts both the **OOv2** (request → propose → dispute → settle) and **OOv3** (assert → dispute → settle) flows, and escalates disputes to `pythiavoting`.
 
 ## Memo conventions (token transfers to the oracle)
 

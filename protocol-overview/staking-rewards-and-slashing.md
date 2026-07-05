@@ -1,21 +1,21 @@
 # Staking, Rewards & Slashing
 
-Pythia's economic security comes from staked **OOVP**. Stakers vote in the DVM, earn emissions, and are slashed for voting incorrectly or not at all. Staking is handled by `oovp.stake`.
+Pythia's economic security comes from staked **PYTHIA**. Stakers vote in the DVM, earn emissions, and are slashed for voting incorrectly or not at all. Staking is handled by `pythiastake1`.
 
 ## Staking
 
-Stake by transferring OOVP to `oovp.stake` with the memo **`stake`**. Your balance accrues rewards immediately and counts as vote weight in the DVM.
+Stake by transferring PYTHIA to `pythiastake1` with the memo **`stake`**. Your balance accrues rewards immediately and counts as vote weight in the DVM.
 
 * **Unstaking is two-step.** Call `requnstake(voter, amount)` to begin a cooldown, then `execunstake(voter)` after it elapses. The cooldown (default **7 days**, bounded 1–30 days) prevents borrowing stake to swing a vote and returning it immediately.
 * **Rewards vs. principal.** Emissions are paid from a dedicated **emissions vault** wallet, never from stakers' principal. Slashing redistribution moves stake between stakers without leaving the contract.
 
 ## Rewards (emissions)
 
-Staked OOVP continuously accrues protocol emissions using a standard reward-per-token accumulator:
+Staked PYTHIA continuously accrues protocol emissions using a standard reward-per-token accumulator:
 
-* **Emission rate** — default **0.05 OOVP/sec** (≈1.5M OOVP/year), configurable via `setemission` (governance) up to a hard cap.
+* **Emission rate** — default **0.05 PYTHIA/sec** (≈1.5M PYTHIA/year), configurable via `setemission` (governance) up to a hard cap.
 * **Pro-rata** — emissions are shared across all stake in proportion to each staker's balance.
-* **Claiming** — `claimreward(voter)` withdraws accrued OOVP; `restake(voter)` compounds it back into stake. Both can be called by the voter or their delegate; rewards always go to the staker.
+* **Claiming** — `claimreward(voter)` withdraws accrued PYTHIA; `restake(voter)` compounds it back into stake. Both can be called by the voter or their delegate; rewards always go to the staker.
 
 ## Vote-locking (veToken boost)
 
@@ -33,7 +33,7 @@ Slashing math uses your **raw stake**, not your lock-boosted voting power. The b
 
 ## Slashing
 
-When a DVM request resolves, `oovp.voting` finalizes it in two permissionless, batched phases that call into `oovp.stake`:
+When a DVM request resolves, `pythiavoting` finalizes it in two permissionless, batched phases that call into `pythiastake1`:
 
 ### Active slashing — wrong voters
 
@@ -48,7 +48,7 @@ When a DVM request resolves, `oovp.voting` finalizes it in two permissionless, b
 
 Stakers who did not participate at all in a resolved request are charged a **passive (no-vote) slash**, default `DEFAULT_NO_VOTE_SLASH_BPS` = **0.05%** of raw stake per resolved request:
 
-* At the `slashbatch` phase flip, `oovp.voting` opens a **passive event** for the request. Every participant is pre-registered as exempt.
+* At the `slashbatch` phase flip, `pythiavoting` opens a **passive event** for the request. Every participant is pre-registered as exempt.
 * Non-participants are charged **lazily** — the next time they touch their stake (claim, stake more, unstake, etc.), pending passive events are applied via an internal true-up. This avoids iterating the whole staker set on-chain.
 * A safety valve, `trueup(voter, max_events)`, lets anyone catch a voter up if they fall too far behind.
 * Collected passive charges are redistributed to the round's correct voters via `paypassive`; after `PASSIVE_CLOSE_MIN_AGE` (60 days) `closepassive` finalizes the event and banks any undistributed residue.

@@ -17,11 +17,7 @@ Pythia's oracle provides verified on-chain data for use cases such as:
 3. Custom derivatives and synthetic assets
 4. On-chain governance execution
 
-The oracle is designed to be modular and extensible. Two flows are live inside the same `oovp.oracle` contract: **OOv2** (request/propose) and **OOv3** (assertions). Which one you use depends on your application.
-
-{% hint style="info" %}
-**Product separation.** _Pythia_ is the oracle / DVM / staking / governance protocol described in these docs. _Foretell_ is a prediction-market application that settles through Pythia, and _Prism_ is a benchmark / market-data product. They are separate products that integrate with Pythia — this book is about the protocol layer.
-{% endhint %}
+The oracle is designed to be modular and extensible. Two flows are live inside the same `pythiaoorcle` contract: **OOv2** (request/propose) and **OOv3** (assertions). Which one you use depends on your application.
 
 ***
 
@@ -76,15 +72,15 @@ OOv3 suits protocols that just need asserted data verified.
 
 ## Community & governance
 
-The **OOVP** token secures Pythia's oracle through decentralized governance and economic guarantees against corruption. Stakers vote on disputes and governance proposals, earning emission rewards for honest participation and losing stake (slashing) for incorrect or absent votes.
+The **PYTHIA** token secures Pythia's oracle through decentralized governance and economic guarantees against corruption. Stakers vote on disputes and governance proposals, earning emission rewards for honest participation and losing stake (slashing) for incorrect or absent votes.
 
 **Governance proposals** are executed through the oracle itself: a proposal is submitted as an OOv3 assertion, and if it settles as _true_ it becomes executable on-chain.
 
 | | |
 |---|---|
-| **[Governance](community/governance/README.md)** | The OOVP token, staking, and how the DVM secures the protocol. |
+| **[Governance](community/governance/README.md)** | The PYTHIA token, staking, and how the DVM secures the protocol. |
 | **[The Proposal Process](community/governance/the-proposal-process.md)** | How changes are proposed and ratified. |
-| **[On-Chain Proposals](community/governance/dao-proposals.md)** | Submitting executable on-chain actions through `oovp.govern`. |
+| **[On-Chain Proposals](community/governance/dao-proposals.md)** | Submitting executable on-chain actions through `pythiagovern`. |
 
 ***
 

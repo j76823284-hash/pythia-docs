@@ -1,8 +1,8 @@
-# oovp.token
+# pythiatoken1
 
-The **OOVP** protocol token — a standard `eosio.token` implementation with ANT-style additions (holder burn, explicit RAM `open`/`close`). Voting power is determined by `oovp.stake`, not by token balance snapshots, so the token itself is a plain fungible token.
+The **PYTHIA** protocol token — a standard `eosio.token` implementation with ANT-style additions (holder burn, explicit RAM `open`/`close`). Voting power is determined by `pythiastake1`, not by token balance snapshots, so the token itself is a plain fungible token.
 
-* **Symbol:** `OOVP`, 4 decimals (`1.0000 = 10000` raw units).
+* **Symbol:** `PYTHIA`, 4 decimals (`1.0000 = 10000` raw units).
 * **Uses:** staking, bonds, proposal bonds, rewards.
 
 ## Actions
@@ -24,7 +24,7 @@ The **OOVP** protocol token — a standard `eosio.token` implementation with ANT
 | `retire` | `supply -= quantity` |
 | `burn` | `supply -= quantity` **and** `max_supply -= quantity` |
 
-`burn` permanently removes units from the lifetime cap, which is how protocol fees can deflate OOVP. (It does not erase unrelated unissued headroom that existed before the burn.)
+`burn` permanently removes units from the lifetime cap, which is how protocol fees can deflate PYTHIA. (It does not erase unrelated unissued headroom that existed before the burn.)
 
 ## Key tables (readable)
 
@@ -41,5 +41,5 @@ asset token::get_supply(token, symbol);
 ```
 
 {% hint style="info" %}
-The token contract's behavior is derived from the ANT token-standard repo and adapted into the Pythia protocol stack. The on-chain ticker remains **OOVP** while "Pythia" is the protocol brand.
+The token contract's behavior is derived from the ANT token-standard repo and adapted into the Pythia protocol stack.
 {% endhint %}

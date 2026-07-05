@@ -9,7 +9,7 @@ $$
 $$
 
 * **Profit from Corruption (PfC)** — the value an attacker could extract by forcing a false resolution (e.g. the funds locked in a contract that would pay out on a wrong answer).
-* **Cost of Corruption (CoC)** — what it costs an attacker to control enough of the system to force that answer: acquiring a majority of staked OOVP, and the stake destroyed by slashing when the honest minority resolves against them.
+* **Cost of Corruption (CoC)** — what it costs an attacker to control enough of the system to force that answer: acquiring a majority of staked PYTHIA, and the stake destroyed by slashing when the honest minority resolves against them.
 
 As long as CoC > PfC for every integration, honest resolution is the rational equilibrium.
 
@@ -26,7 +26,7 @@ The minimum bond scales with the final fee so that the economic stake is meaning
 
 ### 2. Stake and slashing (the DVM layer)
 
-If an answer is disputed, it escalates to the DVM, where the outcome is decided by staked OOVP:
+If an answer is disputed, it escalates to the DVM, where the outcome is decided by staked PYTHIA:
 
 * Votes are **stake-weighted**, so influence requires capital at risk.
 * **Wrong voters are slashed**, and the slashed stake is **paid to correct voters** — so an attacker fighting the honest majority bleeds stake to the very people resolving against them.
@@ -40,13 +40,13 @@ Governance can adjust these parameters to keep CoC > PfC as usage grows:
 
 | Lever | Contract | Effect on security |
 |---|---|---|
-| **Final fee** (`setfinalfee`) | `oovp.store` | Raises the minimum bond, increasing the cost of spam and frivolous disputes. |
-| **Bond size** (`setbond` / assertion bond) | `oovp.oracle` | Larger bonds raise the stake behind each answer. |
-| **Liveness** (`setliveness` / assertion liveness) | `oovp.oracle` | Longer windows give honest disputers more time to catch bad answers. |
-| **Burned-bond rate** (`setburnedbps`) | `oovp.oracle` | Sets how much of a losing bond is taken as an oracle fee vs. paid to the winner. |
-| **Emission rate** (`setemission`) | `oovp.stake` | Higher rewards attract more honest stake, raising CoC. |
-| **Slash rates** | `oovp.stake` | Higher penalties make attacking and free-riding costlier. |
-| **GAT / SPAT** (`setthreshold`) | `oovp.voting` | Require broader participation/agreement before a high-value dispute resolves. |
+| **Final fee** (`setfinalfee`) | `pythiastore1` | Raises the minimum bond, increasing the cost of spam and frivolous disputes. |
+| **Bond size** (`setbond` / assertion bond) | `pythiaoorcle` | Larger bonds raise the stake behind each answer. |
+| **Liveness** (`setliveness` / assertion liveness) | `pythiaoorcle` | Longer windows give honest disputers more time to catch bad answers. |
+| **Burned-bond rate** (`setburnedbps`) | `pythiaoorcle` | Sets how much of a losing bond is taken as an oracle fee vs. paid to the winner. |
+| **Emission rate** (`setemission`) | `pythiastake1` | Higher rewards attract more honest stake, raising CoC. |
+| **Slash rates** | `pythiastake1` | Higher penalties make attacking and free-riding costlier. |
+| **GAT / SPAT** (`setthreshold`) | `pythiavoting` | Require broader participation/agreement before a high-value dispute resolves. |
 
 ## Guidance for integrators
 
@@ -59,4 +59,4 @@ Because Pythia is generic, **you** are responsible for sizing your integration s
 
 ## Fee flow and the token
 
-Losing bonds and settlement fees flow to the oracle **fee vault**, and protocol fees collected in `oovp.store` are split between burning and treasury (default 50/50). Burning OOVP ties protocol usage to token scarcity, while the treasury funds ongoing operations. Emissions flow the other way, paying honest stakers. The net design keeps a large, honest, well-compensated staker set standing between any attacker and a false resolution.
+Losing bonds and settlement fees flow to the oracle **fee vault**, and protocol fees collected in `pythiastore1` are split between burning and treasury (default 50/50). Burning PYTHIA ties protocol usage to token scarcity, while the treasury funds ongoing operations. Emissions flow the other way, paying honest stakers. The net design keeps a large, honest, well-compensated staker set standing between any attacker and a false resolution.

@@ -12,7 +12,7 @@ You'll want at least three roles (they can be three testnet accounts you control
 
 * an **asserter/proposer**,
 * a **disputer**,
-* one or more **stakers/voters** (with staked OOVP),
+* one or more **stakers/voters** (with staked PYTHIA),
 * and a **keeper** to push cranks (can be any of the above).
 
 ## Path A — dispute an OOv3 assertion
@@ -20,17 +20,17 @@ You'll want at least three roles (they can be three testnet accounts you control
 **1. Assert.**
 
 ```bash
-cleos push action <token> transfer '["asserter","<oracle>","2.0000 OOVP","assert"]' -p asserter@active
+cleos push action <token> transfer '["asserter","<oracle>","2.0000 PYTHIA","assert"]' -p asserter@active
 cleos push action <oracle> asserttruth '{
   "asserter":"asserter","claim":"<hex>","callback_recipient":"","escalation_manager":"",
-  "liveness":60,"currency":{"sym":"4,OOVP","contract":"<token>"},"bond":"2.0000 OOVP",
+  "liveness":60,"currency":{"sym":"4,PYTHIA","contract":"<token>"},"bond":"2.0000 PYTHIA",
   "identifier":0,"domain_id":0}' -p asserter@active
 ```
 
 **2. Dispute (within liveness).**
 
 ```bash
-cleos push action <token> transfer '["disputer","<oracle>","2.0000 OOVP","assert"]' -p disputer@active
+cleos push action <token> transfer '["disputer","<oracle>","2.0000 PYTHIA","assert"]' -p disputer@active
 cleos push action <oracle> dispassert '{"disputer":"disputer","assertion_id":<id>}' -p disputer@active
 ```
 
@@ -43,7 +43,7 @@ This escalates a request to the DVM (identifier `ASSERT_TRUTH`).
 **2. Dispute (within liveness).**
 
 ```bash
-cleos push action <token> transfer '["disputer","<oracle>","3.0000 OOVP","bond:<request_id>"]' -p disputer@active
+cleos push action <token> transfer '["disputer","<oracle>","3.0000 PYTHIA","bond:<request_id>"]' -p disputer@active
 cleos push action <oracle> disputeprice '{"disputer":"disputer","requester":"myapp","identifier":...,"timestamp":...,"ancillary_data":"..."}' -p disputer@active
 ```
 

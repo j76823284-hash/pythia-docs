@@ -1,16 +1,16 @@
 # Bonds, Fees & Liveness
 
-This page collects the exact economics of `oovp.oracle`: how bonds are sized, how fees are taken, and how liveness bounds work — with worked examples.
+This page collects the exact economics of `pythiaoorcle`: how bonds are sized, how fees are taken, and how liveness bounds work — with worked examples.
 
 ## Final fee
 
-Each whitelisted collateral has a flat **final fee**, configured per token in `oovp.store` via `setfinalfee` and read cross-contract with `store::get_final_fee`. The final fee is the base unit that bonds and minimum bonds are derived from. It defends against spam: every serious answer must post at least a final fee's worth of value.
+Each whitelisted collateral has a flat **final fee**, configured per token in `pythiastore1` via `setfinalfee` and read cross-contract with `store::get_final_fee`. The final fee is the base unit that bonds and minimum bonds are derived from. It defends against spam: every serious answer must post at least a final fee's worth of value.
 
 ## Burned-bond rate
 
 On a **disputed** settlement, a fraction of the losing bond is taken as an **oracle fee** and sent to the fee vault. That fraction is the burned-bond rate:
 
-* Set via `oovp.oracle::setburnedbps(bps)`; `0` falls back to `DEFAULT_BURNED_BOND_BPS` = **5000 (50%)**.
+* Set via `pythiaoorcle::setburnedbps(bps)`; `0` falls back to `DEFAULT_BURNED_BOND_BPS` = **5000 (50%)**.
 * Bounded to ≤ 10000 (100%).
 
 $$
@@ -80,7 +80,7 @@ At 50% burn, the winner nets **1.5 × B** — their own bond back plus the loser
 
 ## Worked example
 
-Assume final fee **F = 1.0000 OOVP**, default bond **B = 2.0000 OOVP**, burn rate **f = 50%**, reward **R = 5.0000 OOVP**.
+Assume final fee **F = 1.0000 PYTHIA**, default bond **B = 2.0000 PYTHIA**, burn rate **f = 50%**, reward **R = 5.0000 PYTHIA**.
 
 | Scenario | Winner receives | Fee vault | Loser loses |
 |---|---|---|---|

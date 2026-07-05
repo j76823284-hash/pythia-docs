@@ -1,14 +1,14 @@
 # DVM FAQ
 
-Common questions about Pythia's Data Verification Mechanism (`oovp.voting`) and staking (`oovp.stake`).
+Common questions about Pythia's Data Verification Mechanism (`pythiavoting`) and staking (`pythiastake1`).
 
 ### What is the DVM?
 
-The Data Verification Mechanism is Pythia's court of last resort. When an optimistic answer is disputed, OOVP stakers vote on the correct outcome using a two-phase commit-reveal process. See [The DVM](the-dvm.md).
+The Data Verification Mechanism is Pythia's court of last resort. When an optimistic answer is disputed, PYTHIA stakers vote on the correct outcome using a two-phase commit-reveal process. See [The DVM](the-dvm.md).
 
 ### Who can vote?
 
-Anyone who has staked OOVP into `oovp.stake`. Voting weight equals your staked balance (optionally boosted by a vote-lock multiplier) snapshotted at commit time. You can vote directly, or appoint a **delegate** who votes on your behalf while you keep the rewards. See [Delegated Voting](../using-pythia/voting-walkthrough/delegated-voting.md).
+Anyone who has staked PYTHIA into `pythiastake1`. Voting weight equals your staked balance (optionally boosted by a vote-lock multiplier) snapshotted at commit time. You can vote directly, or appoint a **delegate** who votes on your behalf while you keep the rewards. See [Delegated Voting](../using-pythia/voting-walkthrough/delegated-voting.md).
 
 ### How long does a dispute take to resolve?
 
@@ -42,7 +42,7 @@ Additionally, unstaking is subject to a cooldown (default 7 days), so stake cann
 
 Two things:
 
-1. **Emissions** — staked OOVP continuously accrues protocol emissions (default 0.05 OOVP/sec, shared pro-rata across all stake).
+1. **Emissions** — staked PYTHIA continuously accrues protocol emissions (default 0.05 PYTHIA/sec, shared pro-rata across all stake).
 2. **Slashing redistribution** — when you vote with the resolved majority, you receive a pro-rata share of the stake slashed from voters who were wrong or absent.
 
 ### What happens if I vote incorrectly or don't vote?

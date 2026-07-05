@@ -1,9 +1,9 @@
 # Optimistic Oracle: v2 and v3
 
-Pythia ships **both** oracle flows in a single contract, `oovp.oracle`. They share the same dispute path and DVM backstop but differ in how an answer is produced.
+Pythia ships **both** oracle flows in a single contract, `pythiaoorcle`. They share the same dispute path and DVM backstop but differ in how an answer is produced.
 
 {% hint style="info" %}
-Both flows live in `oovp.oracle`. You do not deploy anything to use them — you register your contract in `oovp.finder` and call the relevant actions. See [Registering a Contract](../using-pythia/registering-a-contract.md).
+Both flows live in `pythiaoorcle`. You do not deploy anything to use them — you register your contract in `<finder>` and call the relevant actions. See [Registering a Contract](../using-pythia/registering-a-contract.md).
 {% endhint %}
 
 ## OOv2 — request then propose
@@ -79,9 +79,9 @@ so voters and off-chain tooling can unambiguously parse the assertion context.
 | Typical products | Prediction markets, insurance, event resolution. | Data assertions, governance approval, self-resolving markets. |
 
 {% hint style="success" %}
-Pythia's own **governance** contract uses OOv3: `oovp.govern::propose` submits the proposal as an assertion and checks that it settled `true` before allowing execution. See [On-Chain Proposals](../community/governance/dao-proposals.md).
+Pythia's own **governance** contract uses OOv3: `pythiagovern::propose` submits the proposal as an assertion and checks that it settled `true` before allowing execution. See [On-Chain Proposals](../community/governance/dao-proposals.md).
 {% endhint %}
 
 ## Shared parameter cache
 
-To keep `asserttruth` cheap, the oracle caches the collateral whitelist, final-fee schedule, and identifier whitelist on-chain. After adding a currency or identifier in `oovp.finder`/`oovp.store`, call the permissionless **`syncparams`** action to refresh the cache. See the [Deployment & Setup Checklist](../resources/deployment-checklist.md).
+To keep `asserttruth` cheap, the oracle caches the collateral whitelist, final-fee schedule, and identifier whitelist on-chain. After adding a currency or identifier in `<finder>`/`pythiastore1`, call the permissionless **`syncparams`** action to refresh the cache. See the [Deployment & Setup Checklist](../resources/deployment-checklist.md).

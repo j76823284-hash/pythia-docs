@@ -1,14 +1,14 @@
 # Staker & Voter Guide
 
-This guide takes you from zero to a claimed reward. All actions are on `oovp.stake` (staking) and `oovp.voting` (voting).
+This guide takes you from zero to a claimed reward. All actions are on `pythiastake1` (staking) and `pythiavoting` (voting).
 
 ## 1. Stake
 
-Stake by transferring OOVP to the stake contract with the memo **`stake`**:
+Stake by transferring PYTHIA to the stake contract with the memo **`stake`**:
 
 ```bash
 cleos push action <token> transfer \
-  '["myvoter","<stake>","100.0000 OOVP","stake"]' -p myvoter@active
+  '["myvoter","<stake>","100.0000 PYTHIA","stake"]' -p myvoter@active
 ```
 
 Your staked balance is now your vote weight and immediately begins accruing emissions. Check it:
@@ -92,7 +92,7 @@ cleos push action <voting> rewardbatch '{"request_id":...,"round_id":...,"max_ro
 Emissions accrue continuously. Withdraw them, or compound:
 
 ```bash
-# Withdraw accrued OOVP emissions
+# Withdraw accrued PYTHIA emissions
 cleos push action <stake> claimreward '{"voter":"myvoter"}' -p myvoter@active
 
 # Or compound them back into stake
@@ -105,7 +105,7 @@ Unstaking is deliberately slow to prevent vote manipulation:
 
 ```bash
 # Begin the cooldown (default 7 days)
-cleos push action <stake> requnstake '{"voter":"myvoter","amount":"50.0000 OOVP"}' -p myvoter@active
+cleos push action <stake> requnstake '{"voter":"myvoter","amount":"50.0000 PYTHIA"}' -p myvoter@active
 
 # After the cooldown elapses
 cleos push action <stake> execunstake '{"voter":"myvoter"}' -p myvoter@active

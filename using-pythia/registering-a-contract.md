@@ -1,6 +1,6 @@
 # Registering a Contract
 
-Before your contract can request prices from Pythia, it must be **registered** in the `oovp.finder` registry, and the currency and identifier it uses must be whitelisted. This gate prevents spam and griefing from arbitrary accounts.
+Before your contract can request prices from Pythia, it must be **registered** in the `<finder>` registry, and the currency and identifier it uses must be whitelisted. This gate prevents spam and griefing from arbitrary accounts.
 
 {% hint style="info" %}
 Throughout these guides, `<finder>`, `<oracle>`, `<store>`, `<voting>`, `<stake>`, and `<token>` are placeholders for the deployed contract accounts. Get the real account names from [Network Information](../resources/network-information.md).
@@ -8,7 +8,7 @@ Throughout these guides, `<finder>`, `<oracle>`, `<store>`, `<voting>`, `<stake>
 
 ## What the registry controls
 
-`oovp.finder` is a service locator plus three whitelists:
+`<finder>` is a service locator plus three whitelists:
 
 | Registry | Purpose | Admin action |
 |---|---|---|
@@ -27,7 +27,7 @@ cleos push action <finder> regcontract \
   -p myapp@active
 ```
 
-Once registered, `myapp` may call `oovp.oracle::requestprice` and `oovp.voting::requestprice`.
+Once registered, `myapp` may call `pythiaoorcle::requestprice` and `pythiavoting::requestprice`.
 
 ## 2. Ensure your identifier is supported
 
@@ -47,17 +47,17 @@ An identifier is only a **key** for a resolution methodology. What voters actual
 
 ## 3. Ensure your collateral is whitelisted
 
-The token you use for rewards and bonds must be a whitelisted collateral, and (for bond math) it should have a **final fee** configured in `oovp.store`:
+The token you use for rewards and bonds must be a whitelisted collateral, and (for bond math) it should have a **final fee** configured in `pythiastore1`:
 
 ```bash
 # Whitelist the collateral (admin)
 cleos push action <finder> addcollat \
-  '{"token":{"sym":"4,OOVP","contract":"<token>"}}' \
+  '{"token":{"sym":"4,PYTHIA","contract":"<token>"}}' \
   -p <finder>@active
 
 # Set its final fee (admin, on the store)
 cleos push action <store> setfinalfee \
-  '{"collateral":{"sym":"4,OOVP","contract":"<token>"},"fee_amount":"1.0000 OOVP"}' \
+  '{"collateral":{"sym":"4,PYTHIA","contract":"<token>"},"fee_amount":"1.0000 PYTHIA"}' \
   -p <store>@active
 ```
 
@@ -69,7 +69,7 @@ The OOv3 assertion path reads a cached copy of the whitelist and final-fee sched
 
 ```bash
 cleos push action <oracle> syncparams \
-  '{"identifier":0,"currency":{"sym":"4,OOVP","contract":"<token>"}}' \
+  '{"identifier":0,"currency":{"sym":"4,PYTHIA","contract":"<token>"}}' \
   -p anyone@active
 ```
 

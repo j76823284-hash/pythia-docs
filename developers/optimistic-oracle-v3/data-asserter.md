@@ -52,8 +52,8 @@ cleos push action <oracle> asserttruth '{
   "callback_recipient":"dataasserter",
   "escalation_manager":"",
   "liveness":7200,
-  "currency":{"sym":"4,OOVP","contract":"<token>"},
-  "bond":"2.0000 OOVP",
+  "currency":{"sym":"4,PYTHIA","contract":"<token>"},
+  "bond":"2.0000 PYTHIA",
   "identifier":0,
   "domain_id":0
 }' -p reporter1@active

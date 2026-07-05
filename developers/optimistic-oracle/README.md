@@ -1,6 +1,6 @@
 # Optimistic Oracle v2
 
-The OOv2 flow is the **request → propose → dispute → settle** model. Your contract opens a data request; a third-party proposer answers it; anyone can dispute; the DVM is the backstop. It is implemented in `oovp.oracle`.
+The OOv2 flow is the **request → propose → dispute → settle** model. Your contract opens a data request; a third-party proposer answers it; anyone can dispute; the DVM is the backstop. It is implemented in `pythiaoorcle`.
 
 Use OOv2 when you want an **open set of proposers** competing to answer your requests, and you want to pay a reward for correct answers.
 
@@ -14,7 +14,7 @@ This section covers:
 
 A contract integrating OOv2 typically:
 
-1. **Registers** itself in `oovp.finder` (`regcontract`) and ensures its identifier + collateral are whitelisted.
+1. **Registers** itself in `<finder>` (`regcontract`) and ensures its identifier + collateral are whitelisted.
 2. **Escrows a reward** to the oracle (memo `request:<request_id>`) and calls `requestprice`.
 3. Optionally sets **callbacks** so it is notified inline when the answer is proposed, disputed, or settled.
 4. **Reads the settled price** via `oracle::has_price` / `oracle::get_price`, or reacts inside its `pricesettled` callback.

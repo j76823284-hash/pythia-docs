@@ -1,6 +1,6 @@
 # The DVM (Data Verification Mechanism)
 
-The **Data Verification Mechanism** is Pythia's dispute-resolution backstop. It is a stake-weighted **commit-reveal** voting system implemented in `oovp.voting`. When an optimistic answer is disputed, the oracle escalates a price request to the DVM, and OOVP stakers vote on the correct outcome.
+The **Data Verification Mechanism** is Pythia's dispute-resolution backstop. It is a stake-weighted **commit-reveal** voting system implemented in `pythiavoting`. When an optimistic answer is disputed, the oracle escalates a price request to the DVM, and PYTHIA stakers vote on the correct outcome.
 
 ## Rounds and phases
 

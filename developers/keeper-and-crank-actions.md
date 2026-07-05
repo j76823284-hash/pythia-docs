@@ -12,7 +12,7 @@ Because the chain can't call a contract for you, Pythia exposes settlement, reso
 * **Bounded** — each takes a `max_rows`/`max_requests` bound so it never exceeds a transaction's resource limits. Call repeatedly until done.
 * **Idempotent-safe** — they no-op or revert cleanly when there is nothing to do.
 
-## Oracle cranks (`oovp.oracle`)
+## Oracle cranks (`pythiaoorcle`)
 
 | Action | What it does | When |
 |---|---|---|
@@ -23,7 +23,7 @@ Because the chain can't call a contract for you, Pythia exposes settlement, reso
 | `syncparams(identifier, currency)` | Refresh the whitelist/final-fee cache. | After changing collateral or identifiers in finder/store. |
 | `pruneasrt(max_rows, min_age_secs)` | Erase terminal settled assertions to reclaim RAM. | Periodically; `min_age_secs` ≥ 300 s. |
 
-## DVM cranks (`oovp.voting`)
+## DVM cranks (`pythiavoting`)
 
 Run these **in order** after a round's reveal phase ends:
 
@@ -37,7 +37,7 @@ Run these **in order** after a round's reveal phase ends:
 
 `processreqs` must be called during the **commit** phase of the following round (i.e. between rounds). `slashbatch` must fully complete (phase flips to 1) before `rewardbatch`.
 
-## Stake cranks (`oovp.stake`)
+## Stake cranks (`pythiastake1`)
 
 | Action | What it does | When |
 |---|---|---|
@@ -48,7 +48,7 @@ Run these **in order** after a round's reveal phase ends:
 | `closepassive(seq, max_rows)` | Finalize a passive event and bank the residue. | After `PASSIVE_CLOSE_MIN_AGE` (60 days). |
 | `refreshlock(voter)` | Recompute a decaying vote-lock's cached power. | Periodically for locked voters. |
 
-## Store crank (`oovp.store`)
+## Store crank (`pythiastore1`)
 
 | Action | What it does |
 |---|---|

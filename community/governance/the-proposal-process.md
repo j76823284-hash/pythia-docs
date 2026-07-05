@@ -23,17 +23,17 @@ The proposal ID is derived from `sha256(proposer ‖ block_time)`, and the exact
 
 ## 2. Bond
 
-The proposal is inert until the bond is funded. The proposer transfers the **minimum bond** in OOVP to `oovp.govern` with memo `proposal:<proposal_id>`:
+The proposal is inert until the bond is funded. The proposer transfers the **minimum bond** in PYTHIA to `pythiagovern` with memo `proposal:<proposal_id>`:
 
 ```bash
 cleos push action <token> transfer \
-  '["<proposer_contract>","<govern>","500.0000 OOVP","proposal:1234567890"]' \
+  '["<proposer_contract>","<govern>","500.0000 PYTHIA","proposal:1234567890"]' \
   -p <proposer_contract>@active
 ```
 
-When the bond is fully funded, `oovp.govern`'s transfer handler automatically:
+When the bond is fully funded, `pythiagovern`'s transfer handler automatically:
 
-1. Forwards the bond to `oovp.oracle` (memo `assert`).
+1. Forwards the bond to `pythiaoorcle` (memo `assert`).
 2. Submits the proposal as an **`asserttruth`** assertion (asserter = the governor), using the configured voting period as liveness.
 3. Records the assertion's primary key and sets the **timelock** (`executable_after = now + voting_period + execution_delay`).
 
@@ -46,7 +46,7 @@ The proposal is now a live oracle assertion:
 * If **no one disputes** it before the voting period (liveness) elapses, it settles **true** optimistically.
 * If a staker **disputes** it, it escalates to a DVM vote. Voters resolve it `NUMERICAL_TRUE` (approve) or `NUMERICAL_FALSE` (reject).
 
-`oovp.govern::is_approved` reads the oracle's `assertions` table by the stored key and returns true only if the assertion is **settled and resolved true**, the asserter is the governor, and the stored claim matches — a pending or rejected assertion is not approved.
+`pythiagovern::is_approved` reads the oracle's `assertions` table by the stored key and returns true only if the assertion is **settled and resolved true**, the asserter is the governor, and the stored claim matches — a pending or rejected assertion is not approved.
 
 ## 4. Execute
 

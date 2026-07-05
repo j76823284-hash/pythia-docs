@@ -1,4 +1,4 @@
-# oovp.finder
+# Finder Registry
 
 The service locator and registry. Maps interface names to contract accounts and holds the identifier, collateral, and contract whitelists that gate access to the oracle and DVM.
 
@@ -19,7 +19,7 @@ The service locator and registry. Maps interface names to contract accounts and 
 | Name | Role |
 |---|---|
 | `oracle` | Optimistic oracle. |
-| `votingtoken` | OOVP token. |
+| `votingtoken` | PYTHIA token. |
 | `store` | Fee store. |
 | `staking` | Stake contract. |
 | `governor` | Governance. |

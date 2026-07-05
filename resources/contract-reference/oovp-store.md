@@ -1,4 +1,4 @@
-# oovp.store
+# pythiastore1
 
 Fee collection and the per-collateral **final-fee** schedule. The store is where each collateral's final fee lives (which anchors bond math) and where protocol fees accumulate for burning or treasury distribution.
 

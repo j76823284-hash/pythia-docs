@@ -28,21 +28,21 @@ Key terms used throughout Pythia's documentation.
 
 **Delegate** — An account authorized to vote on a staker's behalf while the staker keeps custody and rewards.
 
-**DVM (Data Verification Mechanism)** — Pythia's stake-weighted commit-reveal voting layer (`oovp.voting`) that resolves disputes.
+**DVM (Data Verification Mechanism)** — Pythia's stake-weighted commit-reveal voting layer (`pythiavoting`) that resolves disputes.
 
-**Emissions** — Protocol rewards paid to stakers continuously from the emissions vault (default 0.05 OOVP/sec).
+**Emissions** — Protocol rewards paid to stakers continuously from the emissions vault (default 0.05 PYTHIA/sec).
 
 **Escalation manager** — A pluggable arbitration policy slot on OOv3 assertions. Reserved on-chain; the shipped path routes disputes to the DVM.
 
 **Extended symbol** — An Antelope `(symbol, contract)` pair. Required because WAX has no global token namespace.
 
-**Final fee** — A flat per-collateral fee (`oovp.store`) that anchors bond and minimum-bond math.
+**Final fee** — A flat per-collateral fee (`pythiastore1`) that anchors bond and minimum-bond math.
 
-**Finder** — The registry (`oovp.finder`) mapping interface names to accounts and holding the identifier/collateral/contract whitelists.
+**Finder** — The registry (`<finder>`) mapping interface names to accounts and holding the identifier/collateral/contract whitelists.
 
 **GAT (Global Access Threshold)** — Minimum participation for a DVM result to count: revealed weight ≥ `gat_percentage` of the round's frozen stake (default 5%).
 
-**Governor** — The governance contract (`oovp.govern`).
+**Governor** — The governance contract (`pythiagovern`).
 
 **Identifier** — A `uint64` key selecting the resolution methodology for a request/assertion.
 
@@ -56,7 +56,7 @@ Key terms used throughout Pythia's documentation.
 
 **OOv3** — The assert → dispute → settle flow.
 
-**OOVP** — The protocol token (4 decimals). Used for staking, bonds, and rewards. "Pythia" is the brand; `OOVP` is the on-chain ticker.
+**PYTHIA** — The protocol token (4 decimals). Used for staking, bonds, and rewards.
 
 **Optimistic oracle** — An oracle that accepts answers optimistically after a challenge window, escalating only disputes to a voting backstop.
 

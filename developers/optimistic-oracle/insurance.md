@@ -24,15 +24,15 @@ res: 10000=claim valid (pay), 0=claim invalid (deny)
 
 ```bash
 # Escrow the reward for a proposer, then request the determination
-cleos push action <token> transfer '["myinsurer","<oracle>","2.0000 OOVP","request:<request_id>"]' -p myinsurer@active
+cleos push action <token> transfer '["myinsurer","<oracle>","2.0000 PYTHIA","request:<request_id>"]' -p myinsurer@active
 
 cleos push action <oracle> requestprice '{
   "requester":"myinsurer",
   "identifier":<claim_identifier>,
   "timestamp":0,
   "ancillary_data":"claim: Policy #4471 ...",
-  "currency":{"sym":"4,OOVP","contract":"<token>"},
-  "reward":"2.0000 OOVP"
+  "currency":{"sym":"4,PYTHIA","contract":"<token>"},
+  "reward":"2.0000 PYTHIA"
 }' -p myinsurer@active
 ```
 

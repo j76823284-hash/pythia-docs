@@ -1,6 +1,6 @@
 # Making an Assertion (OOv3)
 
-An **assertion** is a single-action, bonded claim about the state of the world. If nobody disputes it before its liveness expires, it is accepted as true; if disputed, the DVM decides. This is the OOv3 flow, implemented in `oovp.oracle`.
+An **assertion** is a single-action, bonded claim about the state of the world. If nobody disputes it before its liveness expires, it is accepted as true; if disputed, the DVM decides. This is the OOv3 flow, implemented in `pythiaoorcle`.
 
 {% hint style="info" %}
 Prerequisite: your account should exist and your bond currency must be whitelisted collateral with a configured final fee. See [Registering a Contract](registering-a-contract.md).
@@ -12,7 +12,7 @@ Antelope has no ERC-20-style `approve`. Instead you **pre-deposit** the bond by 
 
 ```bash
 cleos push action <token> transfer \
-  '["myasserter","<oracle>","2.0000 OOVP","assert"]' \
+  '["myasserter","<oracle>","2.0000 PYTHIA","assert"]' \
   -p myasserter@active
 ```
 
@@ -29,8 +29,8 @@ cleos push action <oracle> asserttruth '{
   "callback_recipient":"",
   "escalation_manager":"",
   "liveness":7200,
-  "currency":{"sym":"4,OOVP","contract":"<token>"},
-  "bond":"2.0000 OOVP",
+  "currency":{"sym":"4,PYTHIA","contract":"<token>"},
+  "bond":"2.0000 PYTHIA",
   "identifier":0,
   "domain_id":0
 }' -p myasserter@active

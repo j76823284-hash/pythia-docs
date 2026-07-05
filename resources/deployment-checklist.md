@@ -10,20 +10,20 @@ Angle-bracket names (`<oracle>`, `<finder>`, …) are the accounts you deploy to
 
 | # | Account | Contract |
 |---|---|---|
-| 1 | `<token>` | `oovp.token` |
-| 2 | `<finder>` | `oovp.finder` |
-| 3 | `<store>` | `oovp.store` |
-| 4 | `<stake>` | `oovp.stake` |
-| 5 | `<voting>` | `oovp.voting` |
-| 6 | `<oracle>` | `oovp.oracle` |
-| 7 | `<govern>` | `oovp.govern` |
-| 8 | `<reward>` | `oovp.reward` (optional; for app reward integrations) |
+| 1 | `<token>` | `pythiatoken1` |
+| 2 | `<finder>` | `<finder>` |
+| 3 | `<store>` | `pythiastore1` |
+| 4 | `<stake>` | `pythiastake1` |
+| 5 | `<voting>` | `pythiavoting` |
+| 6 | `<oracle>` | `pythiaoorcle` |
+| 7 | `<govern>` | `pythiagovern` |
+| 8 | `<reward>` | `<reward>` (optional; for app reward integrations) |
 
 ## 2. Create and issue the token
 
 ```bash
-cleos push action <token> create '["<issuer>","100000000.0000 OOVP"]' -p <token>@active
-cleos push action <token> issue  '["<issuer>","100000000.0000 OOVP","genesis"]' -p <issuer>@active
+cleos push action <token> create '["<issuer>","100000000.0000 PYTHIA"]' -p <token>@active
+cleos push action <token> issue  '["<issuer>","100000000.0000 PYTHIA","genesis"]' -p <issuer>@active
 ```
 
 ## 3. Register interfaces in the finder
@@ -39,7 +39,7 @@ cleos push action <finder> setaddress '["governor","<govern>"]'        -p <finde
 Then whitelist collateral, add identifiers, and register any integrating contracts:
 
 ```bash
-cleos push action <finder> addcollat '[{"sym":"4,OOVP","contract":"<token>"}]' -p <finder>@active
+cleos push action <finder> addcollat '[{"sym":"4,PYTHIA","contract":"<token>"}]' -p <finder>@active
 cleos push action <finder> addident  '[<identifier>,"BTC/USD"]'                 -p <finder>@active
 cleos push action <finder> regcontract '["<integrator>","<integrator>"]'        -p <integrator>@active
 ```
@@ -48,18 +48,18 @@ cleos push action <finder> regcontract '["<integrator>","<integrator>"]'        
 
 ```bash
 cleos push action <store> setconfig    '["<treasury>",5000]'                          -p <store>@active   # 50% burn
-cleos push action <store> setfinalfee  '[{"sym":"4,OOVP","contract":"<token>"},"1.0000 OOVP"]' -p <store>@active
+cleos push action <store> setfinalfee  '[{"sym":"4,PYTHIA","contract":"<token>"},"1.0000 PYTHIA"]' -p <store>@active
 # If a collateral implements a holder burn(name,asset,string):
-cleos push action <store> setburnable  '[{"sym":"4,OOVP","contract":"<token>"},true]' -p <store>@active
+cleos push action <store> setburnable  '[{"sym":"4,PYTHIA","contract":"<token>"},true]' -p <store>@active
 ```
 
 ## 5. Configure staking
 
 ```bash
-cleos push action <stake> setvotingtkn '["<token>","4,OOVP"]'  -p <stake>@active
+cleos push action <stake> setvotingtkn '["<token>","4,PYTHIA"]'  -p <stake>@active
 cleos push action <stake> setvotingctr '["<voting>"]'          -p <stake>@active
 cleos push action <stake> setemitvault '["<emissions_vault>"]' -p <stake>@active
-cleos push action <stake> setemission  '[500]'                 -p <stake>@active   # 0.05 OOVP/sec
+cleos push action <stake> setemission  '[500]'                 -p <stake>@active   # 0.05 PYTHIA/sec
 cleos push action <stake> setcooldown  '[604800]'              -p <stake>@active   # 7 days (prod)
 cleos push action <stake> setnovote    '[5]'                   -p <stake>@active   # 0.05% passive slash
 cleos push action <stake> setlockparms '[63072000,604800,30000]' -p <stake>@active # 2y max, 1w min, 3x
@@ -86,7 +86,7 @@ cleos push action <oracle> setburnedbps  '[5000]'   -p <oracle>@active   # 50%
 cleos push action <oracle> setdefcur     '[{"sym":"8,WAX","contract":"eosio.token"}]' -p <oracle>@active
 cleos push action <oracle> setfeevault   '["<oracle_fee_vault>"]' -p <oracle>@active
 # Refresh the parameter cache for each currency + identifier:
-cleos push action <oracle> syncparams    '[<identifier>,{"sym":"4,OOVP","contract":"<token>"}]' -p anyone@active
+cleos push action <oracle> syncparams    '[<identifier>,{"sym":"4,PYTHIA","contract":"<token>"}]' -p anyone@active
 ```
 
 ## 8. Configure governance
@@ -95,7 +95,7 @@ cleos push action <oracle> syncparams    '[<identifier>,{"sym":"4,OOVP","contrac
 cleos push action <govern> setconfig     '["<finder>"]'    -p <govern>@active
 cleos push action <govern> setproposer   '["<proposer>"]'  -p <govern>@active
 cleos push action <govern> setemergency  '["<emergency_msig>"]' -p <govern>@active
-cleos push action <govern> setminbond    '["500.0000 OOVP"]' -p <govern>@active
+cleos push action <govern> setminbond    '["500.0000 PYTHIA"]' -p <govern>@active
 cleos push action <govern> setvoteperiod '[172800]' -p <govern>@active  # 48h (prod)
 cleos push action <govern> setexecdelay  '[86400]'  -p <govern>@active  # 24h timelock
 cleos push action <govern> setemrgdelay  '[86400]'  -p <govern>@active
@@ -105,9 +105,9 @@ cleos push action <govern> setemergtgt   '["<target>",true]' -p <govern>@active 
 ## 9. (Optional) Configure the reward vault
 
 ```bash
-cleos push action <reward> setconfig '["<token>","4,OOVP","<admin>"]' -p <reward>@active
+cleos push action <reward> setconfig '["<token>","4,PYTHIA","<admin>"]' -p <reward>@active
 cleos push action <reward> addsource '["<source_contract>",0]'        -p <admin>@active
-cleos push action <token>  transfer  '["<funder>","<reward>","1000000.0000 OOVP","rewardpool"]' -p <funder>@active
+cleos push action <token>  transfer  '["<funder>","<reward>","1000000.0000 PYTHIA","rewardpool"]' -p <funder>@active
 ```
 
 ## 10. Permissions
@@ -125,5 +125,5 @@ cleos push action <token>  transfer  '["<funder>","<reward>","1000000.0000 OOVP"
 * Confirm `setburnedbps`, final fee, and `getminbond` produce the expected bond sizes.
 
 {% hint style="warning" %}
-Before mainnet, migrate all admin (`owner`/`active`) keys of the contract and vault accounts to a **multisig**, and hand parameter control to `oovp.govern`. A single-key deployer holding admin over the oracle is a launch blocker.
+Before mainnet, migrate all admin (`owner`/`active`) keys of the contract and vault accounts to a **multisig**, and hand parameter control to `pythiagovern`. A single-key deployer holding admin over the oracle is a launch blocker.
 {% endhint %}

@@ -1,10 +1,8 @@
-# oovp.reward
+# Reward Vault
 
-A generic, reusable **reward-distribution vault**: a pre-funded pool of a single reward token (typically OOVP) from which whitelisted "source" contracts grant rewards to users. The vault is policy-free — _why_ a reward is granted lives in the calling source contract — which keeps it reusable across integrations.
+A generic, reusable **reward-distribution vault**: a pre-funded pool of a single reward token (typically PYTHIA) from which whitelisted "source" contracts grant rewards to users. The vault is policy-free — _why_ a reward is granted lives in the calling source contract — which keeps it reusable across integrations.
 
-{% hint style="info" %}
-`oovp.reward` is infrastructure used by application integrations (for example, the Foretell prediction market rewards traders and seeders through it). It is not part of the core oracle/DVM path, but it ships in the Pythia suite.
-{% endhint %}
+`<reward>` is optional infrastructure for application-level reward distribution. It is not part of the core oracle/DVM path.
 
 ## Memo conventions (token transfers to the reward contract)
 

@@ -27,12 +27,6 @@ Pythia implements the same optimistic-oracle + DVM architecture as UMA, rebuilt 
 </details>
 
 <details>
-<summary>What is Pythia, versus Foretell and Prism?</summary>
-
-**Pythia** is the protocol layer: oracle, DVM, staking, governance. **Foretell** is a prediction-market application that settles through Pythia. **Prism** is a benchmark / market-data product. These docs are about Pythia; Foretell and Prism are separate products that integrate with it.
-</details>
-
-<details>
 <summary>Is Pythia live on mainnet?</summary>
 
 Not yet. Pythia is deployed and exercised on the **WAX testnet**. Mainnet is gated on external audit sign-off and multisig hardening of admin keys. See [Audits & Security](resources/audits-and-security.md).
@@ -82,7 +76,7 @@ So that no false resolution is profitable for the value your contract has at ris
 <details>
 <summary>How do I earn as a staker?</summary>
 
-Stake OOVP (transfer with memo `stake`) and vote honestly on disputes. You earn continuous **emissions** plus a share of the stake **slashed** from wrong/absent voters. See the [Staker & Voter Guide](using-pythia/voting-walkthrough/voter-guide.md).
+Stake PYTHIA (transfer with memo `stake`) and vote honestly on disputes. You earn continuous **emissions** plus a share of the stake **slashed** from wrong/absent voters. See the [Staker & Voter Guide](using-pythia/voting-walkthrough/voter-guide.md).
 </details>
 
 <details>
@@ -112,15 +106,15 @@ Yes — **lock** your stake for a fixed duration to earn up to a 3× voting-powe
 ## Token & governance
 
 <details>
-<summary>What is the OOVP token used for?</summary>
+<summary>What is the PYTHIA token used for?</summary>
 
-Staking (vote weight), bonds (oracle and governance), and rewards (emissions + slashing redistribution). It has 4 decimals. "Pythia" is the brand; `OOVP` is the on-chain ticker.
+Staking (vote weight), bonds (oracle and governance), and rewards (emissions + slashing redistribution). PYTHIA has 4 decimals.
 </details>
 
 <details>
 <summary>How does governance work?</summary>
 
-A proposal is submitted through `oovp.govern::propose` as an OOv3 oracle assertion. If it settles **true** (undisputed, or upheld by a DVM vote) and the timelock passes, anyone can execute its bundled on-chain actions. Governance thus uses the same security mechanism as the oracle. See [Governance](community/governance/README.md).
+A proposal is submitted through `pythiagovern::propose` as an OOv3 oracle assertion. If it settles **true** (undisputed, or upheld by a DVM vote) and the timelock passes, anyone can execute its bundled on-chain actions. Governance thus uses the same security mechanism as the oracle. See [Governance](community/governance/README.md).
 </details>
 
 <details>

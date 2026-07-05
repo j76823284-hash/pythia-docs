@@ -25,15 +25,15 @@ Compute this off-chain (any keccak/sha256 lib) so you can escrow against it.
 
 ```bash
 cleos push action <token> transfer \
-  '["myapp","<oracle>","5.0000 OOVP","request:<request_id>"]' -p myapp@active
+  '["myapp","<oracle>","5.0000 PYTHIA","request:<request_id>"]' -p myapp@active
 
 cleos push action <oracle> requestprice '{
   "requester":"myapp",
   "identifier":4763543210000000000,
   "timestamp":1767225600,
   "ancillary_data":"q:Will it rain in NYC on 2026-07-01? res:1=yes,0=no",
-  "currency":{"sym":"4,OOVP","contract":"<token>"},
-  "reward":"5.0000 OOVP"
+  "currency":{"sym":"4,PYTHIA","contract":"<token>"},
+  "reward":"5.0000 PYTHIA"
 }' -p myapp@active
 ```
 
@@ -45,7 +45,7 @@ A proposer deposits **bond + final fee** and answers:
 
 ```bash
 cleos push action <token> transfer \
-  '["proposer1","<oracle>","3.0000 OOVP","bond:<request_id>"]' -p proposer1@active
+  '["proposer1","<oracle>","3.0000 PYTHIA","bond:<request_id>"]' -p proposer1@active
 
 cleos push action <oracle> proposeprice '{
   "proposer":"proposer1",
@@ -77,7 +77,7 @@ The proposer gets their bond + final fee + reward back, and the resolved price i
 From a contract:
 
 ```cpp
-#include "oovp.oracle.hpp"
+#include "pythiaoorcle.hpp"
 
 if (oovp::oracle::has_price(oracle_acct, get_self(), identifier, timestamp, ancillary_data)) {
     int128_t price = oovp::oracle::get_price(oracle_acct, get_self(), identifier, timestamp, ancillary_data);

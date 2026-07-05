@@ -1,4 +1,4 @@
-# oovp.govern
+# pythiagovern
 
 Governance. Proposals are submitted as OOv3 oracle assertions; if the assertion settles truthful, the proposal's bundled transactions become executable after a timelock.
 

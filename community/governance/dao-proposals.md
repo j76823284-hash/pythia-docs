@@ -21,7 +21,7 @@ Rules enforced at execution time:
 * Each `to` account must exist.
 * **Exactly one authorization**, and it must be **`{actor: to, permission: "exec"}`**.
 
-The `exec` permission requirement is the crux of governance safety: governed contracts link their sensitive actions to an `exec` permission whose authority is the governor contract (via `eosio.code`). So only a proposal that the DVM approved — executed by `oovp.govern` — can invoke those actions.
+The `exec` permission requirement is the crux of governance safety: governed contracts link their sensitive actions to an `exec` permission whose authority is the governor contract (via `eosio.code`). So only a proposal that the DVM approved — executed by `pythiagovern` — can invoke those actions.
 
 ## Building the `data` field
 
@@ -35,7 +35,7 @@ cleos convert pack_action_data <store> setfinalfee \
 
 ## Example: change the DVM emission rate
 
-A proposal with a single action that calls `oovp.stake::setemission`:
+A proposal with a single action that calls `pythiastake1::setemission`:
 
 ```json
 {
@@ -48,7 +48,7 @@ A proposal with a single action that calls `oovp.stake::setemission`:
       "data": "<packed setemission args>"
     }
   ],
-  "ancillary_data": "PIP-7: reduce staking emission to 0.04 OOVP/sec"
+  "ancillary_data": "PIP-7: reduce staking emission to 0.04 PYTHIA/sec"
 }
 ```
 

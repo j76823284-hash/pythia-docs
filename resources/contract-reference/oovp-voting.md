@@ -1,6 +1,6 @@
-# oovp.voting
+# pythiavoting
 
-The Data Verification Mechanism (DVM). Stake-weighted commit-reveal voting that resolves disputes escalated from `oovp.oracle`.
+The Data Verification Mechanism (DVM). Stake-weighted commit-reveal voting that resolves disputes escalated from `pythiaoorcle`.
 
 ## Rounds & phases
 
@@ -52,7 +52,7 @@ For `ASSERT_TRUTH` disputes, `price` must be `NUMERICAL_TRUE` (10000) or `NUMERI
 
 * Vote weight snapshotted at **commit** time.
 * Round `total_stake` frozen on the first commit of the round (`roundsnaps`).
-* Unstake cooldown (in `oovp.stake`) prevents borrow-and-return within a round.
+* Unstake cooldown (in `pythiastake1`) prevents borrow-and-return within a round.
 
 ## Key tables (readable)
 

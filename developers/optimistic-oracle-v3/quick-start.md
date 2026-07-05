@@ -15,7 +15,7 @@ See [Registering a Contract](../../using-pythia/registering-a-contract.md).
 
 ```bash
 cleos push action <token> transfer \
-  '["myasserter","<oracle>","2.0000 OOVP","assert"]' -p myasserter@active
+  '["myasserter","<oracle>","2.0000 PYTHIA","assert"]' -p myasserter@active
 ```
 
 The deposit must be at least the **minimum bond** (2× the final fee at the default 50% burn rate).
@@ -29,8 +29,8 @@ cleos push action <oracle> asserttruth '{
   "callback_recipient":"",
   "escalation_manager":"",
   "liveness":7200,
-  "currency":{"sym":"4,OOVP","contract":"<token>"},
-  "bond":"2.0000 OOVP",
+  "currency":{"sym":"4,PYTHIA","contract":"<token>"},
+  "bond":"2.0000 PYTHIA",
   "identifier":0,
   "domain_id":0
 }' -p myasserter@active
@@ -62,7 +62,7 @@ cleos push action <oracle> settleassert '{"assertion_id":<id>}' -p anyone@active
 From a contract, read the `assertions` table directly (it is public so integrators can query it):
 
 ```cpp
-#include "oovp.oracle.hpp"
+#include "pythiaoorcle.hpp"
 
 oovp::oracle::assertions tbl(oracle_acct, oracle_acct.value);
 auto a = tbl.find(assertion_pk);

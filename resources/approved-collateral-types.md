@@ -1,6 +1,6 @@
 # Approved Collateral Types
 
-**Collateral** is the token used to pay rewards and post bonds. Only tokens whitelisted in `oovp.finder` (with a final fee configured in `oovp.store`) may be used.
+**Collateral** is the token used to pay rewards and post bonds. Only tokens whitelisted in `<finder>` (with a final fee configured in `pythiastore1`) may be used.
 
 ## What makes a token usable
 
@@ -14,10 +14,10 @@ The store additionally auto-credits any transfer of a token that has a registere
 
 ## The `extended_symbol` model
 
-WAX has no global token namespace — a symbol like `OOVP` only means something together with its **contract**. Everywhere collateral appears, Pythia uses an `extended_symbol`:
+WAX has no global token namespace — a symbol like `PYTHIA` only means something together with its **contract**. Everywhere collateral appears, Pythia uses an `extended_symbol`:
 
 ```json
-{ "sym": "4,OOVP", "contract": "<token_contract>" }
+{ "sym": "4,PYTHIA", "contract": "<token_contract>" }
 ```
 
 Always specify both the symbol (with precision) and the contract. Two different contracts can both issue a token called `USDC`; they are distinct collateral to Pythia.
@@ -30,7 +30,7 @@ Because a bond's economic weight is only as good as the token behind it, prefer 
 * **Non-blacklistable in a way that traps funds** — avoid tokens that can freeze the oracle's balance mid-dispute.
 * **Appropriately priced via its final fee** — set the final fee so the minimum bond is economically meaningful for the value the token secures.
 
-The protocol token **OOVP** is always a natural collateral (it is the bond/stake token and is used by governance). Applications frequently also list a stable collateral (e.g. a USD-pegged token on its own contract) for markets denominated in dollars.
+The protocol token **PYTHIA** is always a natural collateral (it is the bond/stake token and is used by governance). Applications frequently also list a stable collateral (e.g. a USD-pegged token on its own contract) for markets denominated in dollars.
 
 ## Adding collateral
 

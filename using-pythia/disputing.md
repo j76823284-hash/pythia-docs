@@ -11,7 +11,7 @@ While a request is in the `PROPOSED` state and liveness has not expired, deposit
 ```bash
 # Deposit the disputer bond + final fee
 cleos push action <token> transfer \
-  '["disputer1","<oracle>","3.0000 OOVP","bond:1234567890"]' -p disputer1@active
+  '["disputer1","<oracle>","3.0000 PYTHIA","bond:1234567890"]' -p disputer1@active
 
 # Dispute the proposal
 cleos push action <oracle> disputeprice '{
@@ -42,7 +42,7 @@ While an assertion is active and liveness has not expired, deposit a bond equal 
 ```bash
 # Deposit the disputer bond
 cleos push action <token> transfer \
-  '["disputer1","<oracle>","2.0000 OOVP","assert"]' -p disputer1@active
+  '["disputer1","<oracle>","2.0000 PYTHIA","assert"]' -p disputer1@active
 
 # Dispute the assertion
 cleos push action <oracle> dispassert '{"disputer":"disputer1","assertion_id":1234567890}' -p disputer1@active
@@ -59,7 +59,7 @@ and fires an `assertdisp(assertion_id)` callback if the assertion registered a c
 ## What happens after a dispute
 
 1. The dispute is queued for the DVM's **next** round.
-2. OOVP stakers vote via commit-reveal (see [The DVM](../protocol-overview/the-dvm.md)). Assertion disputes resolve to `NUMERICAL_TRUE` (asserter was right) or `NUMERICAL_FALSE`.
+2. PYTHIA stakers vote via commit-reveal (see [The DVM](../protocol-overview/the-dvm.md)). Assertion disputes resolve to `NUMERICAL_TRUE` (asserter was right) or `NUMERICAL_FALSE`.
 3. Once resolved, anyone calls `settle` (OOv2) or `settleassert` (OOv3). The oracle reads the DVM result and pays the winner.
 
 ## Payouts
