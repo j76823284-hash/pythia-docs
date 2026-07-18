@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome to Pythia](README.md)
+* [Pythia Oracle & DVM](README.md)
 * [FAQs](faqs.md)
 
 ## Protocol Overview
@@ -61,3 +61,18 @@
 * [Audits & Security](resources/audits-and-security.md)
 * [Glossary](resources/glossary.md)
 * [Links](resources/links.md)
+
+***
+
+* [Oracle/DVM API reference](oracle-dvm-api-reference.md)
+* [Oracle/DVM architecture](oracle-dvm-architecture.md)
+* [Pythia Oracle & DVM documentation](pythia-oracle-and-dvm-documentation.md)
+* [Tutorials](tutorials/README.md)
+  * [Make and settle your first truth assertion](tutorials/make-and-settle-your-first-truth-assertion.md)
+* [How-to guides](how-to-guides/README.md)
+  * [Request and settle a value](how-to-guides/request-and-settle-a-value.md)
+  * [Dispute and resolve an assertion](how-to-guides/dispute-and-resolve-an-assertion.md)
+  * [Run DVM maintenance](how-to-guides/run-dvm-maintenance.md)
+  * [Configure Oracle parameters](how-to-guides/configure-oracle-parameters.md)
+* [Explanations](explanations/README.md)
+  * [$PYORA tokenomics](explanations/usdpyora-tokenomics.md)
